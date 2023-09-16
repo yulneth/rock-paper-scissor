@@ -1,57 +1,67 @@
 console.log("Hello World!");
 
 const computerChoice = ['rock', 'paper', 'scissors'];
-let playerSelection = prompt("Choose between rock,paper or scissors");
-playerSelection = playerSelection.toLowerCase();
-console.log (computerChoice.length);
-
-let computerSelection = getComputerChoice(computerChoice);
+let playerSelection;
+let computerSelection;
 
 function getComputerChoice(computerChoice){
    return (computerChoice[(Math.floor(Math.random() * computerChoice.length))]);
 }
 
 
-console.log(computerSelection);
-
 
 function playRound(playerSelection, computerSelection) {
-    if ((computerSelection == "scissors") && (playerSelection == "rock")){
-    console.log("you lose rock beats scissors");
+    if ((playerSelection == "rock") && (computerSelection == "scissors")){
+    console.log("Player wins");
     }
-    else if ((computerSelection == "rock") && (playerSelection == "scissors")) { 
-    console.log("you win");
+    else if ((playerSelection == "rock") && (computerSelection == "paper")) { 
+    console.log("Player lose");
     }
-    else if ((computerSelection == "rock") && (playerSelection == "rock")){
+    else if ((playerSelection == "rock") && (computerSelection == "rock")){
     console.log('its a draw');
+    }
+    else if ((playerSelection == "scissors") && (computerSelection == "paper")) { 
+        console.log("Player wins");
+    }
+    else if ((playerSelection == "scissors") && (computerSelection == "scissors")){
+        console.log('its a draw');
+    }
+    else if ((playerSelection == "scissors") && (computerSelection == "rock")) { 
+         console.log("Player lose");
+    }
+    else if ((playerSelection == "paper") && (computerSelection == "rock")) { 
+        console.log("Player wins");
+    }
+    else if ((playerSelection == "paper") && (computerSelection == "paper")){
+        console.log('its a draw');
+    }
+    else if ((playerSelection == "paper") && (computerSelection == "scissors")) { 
+         console.log("Player lose");
+    }
+    else{
+        console.log('invalid input');
     }
   } 
 
 
-//const playerSelection = "rock";
-//console.log(playRound(playerSelection, computerSelection));
-
 function game(){
-return console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
+
 }
 
-game();
+for (let i = 1; i<=5;i++){
+    console.log('game '+ i);
+    computerSelection = getComputerChoice(computerChoice);
+    playerSelection = prompt("Choose between rock,paper or scissors");
+    playerSelection = playerSelection.toLowerCase();
+    console.log('Player chooses ' + playerSelection);
+    console.log('Machine chooses ' + computerSelection);
+    
+    game();
+}
+console.log('game over');
 
 
 
 
 
-/*console.log(playerSelection);
-if (playerSelection === "rock" && computerSelection === "scissors"){
-    console.log("you win");
-    }
-    else {
-        console.log("you lose");
-    }
-
-    else if ((computerSelection == "rock") && (playerSelection == "scissors")) { 
-        console.log("you win");
-        }
-        else if ((computerSelection == "rock") && (playerSelection == "rock")){
-        console.log('its a draw');
-        }*/
